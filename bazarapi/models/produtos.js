@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('./database');
 
-const produtos = database.define('produtos', {
+const produto = database.define('produtos', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -20,6 +20,8 @@ const produtos = database.define('produtos', {
         type: Sequelize.DOUBLE,
         allowNull: false,
     }
+}, {
+    timestamps: false
 });
 
-module.exports = produtos;
+module.exports = produto;
