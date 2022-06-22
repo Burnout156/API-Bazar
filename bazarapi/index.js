@@ -47,6 +47,7 @@ app.get("/listar", async (req, res) => {
 app.delete("/deletar/:id", async (req, res) => {
     const _id = req.params.id
     console.log("req.params: " + _id)
+    
     await Produto.destroy({
         where: { id: _id }
 
@@ -62,6 +63,28 @@ app.delete("/deletar/:id", async (req, res) => {
         });
     });
 });
+
+app.put("/atualizar/:id", async (req, res) => {
+    const _id = req.params.id
+    req.query.ultimaAtualizacao = new Date();
+
+    console.log("req.params: " + _id)   
+    console.log("req.query.nome: " + req.query.nome)
+    console.log("req.query.dataAtt: " + req.query.ultimaAtualizacao)
+
+    await Produto.update(req.query ,{ where: { id: _id } }
+        ).then(() => {
+            return res.status(200).json({
+                erro: false,
+                mensagem: "Registro atualizado!"
+            });
+        }).catch((error) => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro ao atualizar! " + error
+            });
+         });
+})
 
 app.listen(8080, () => {
     console.log('Server start...');

@@ -19,6 +19,14 @@ const Produto = database.define('produtos', {
     preco: {
         type: Sequelize.DOUBLE,
         allowNull: false,
+    },
+    dataCriacao: {
+        type: Sequelize.DATE,
+        allowNull: false
+    },
+    ultimaAtualizacao: {
+        type: Sequelize.DATE,
+        allowNull: false
     }
 }, {
     timestamps: false
