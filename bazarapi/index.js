@@ -66,7 +66,9 @@ app.delete("/deletar/:id", async (req, res) => {
 
 app.put("/atualizar/:id", async (req, res) => {
     const _id = req.params.id
-    req.query.ultimaAtualizacao = new Date();
+
+    req.query.ultimaAtualizacao = new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), new Date().getHours(),
+                                  new Date().getMinutes(), new Date().getSeconds()))
 
     console.log("req.params: " + _id)   
     console.log("req.query.nome: " + req.query.nome)
