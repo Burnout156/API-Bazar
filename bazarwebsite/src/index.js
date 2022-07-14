@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Cabecalho from './componentes/Cabecalho';
+import Cabecalho from './componentes/Cabecalho/Cabecalho';
 import styles from './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
