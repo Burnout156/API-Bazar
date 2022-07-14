@@ -1,68 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import Cabecalho from './componentes/Cabecalho';
+import styles from './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-class Square extends React.Component {
+class Listar extends React.Component {
+
+    constructor(props){
+      super(props);
+      this.state = {
+        value: "clique aqui",
+      }
+    }
+
     render() {
       return (
-        <button className="square" onClick={function() { console.log('click'); }}>
-         {this.props.value}
-        </button>
+        <body className={styles.body}>
+          <div>
+            <Cabecalho/>
+            <button className='btn btn-primary' onClick={clicar}>
+              {this.state.value}
+            </button>
+          </div>
+        </body>
       );
     }
   }
+
+  function clicar() {
+    //return console.log('click');
+    return this.props.value = "clicado";
+  } 
   
-  class Board extends React.Component {
-    renderSquare(i) {
-      return <Square value={i} />;
-    }
-  
-    render() {
-      const status = 'Next player: X';
-  
-      return (
-        <div>
-          <div className="status">{status}</div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
-        </div>
-      );
-    }
-  }
-  
-  class Game extends React.Component {
-    render() {
-      return (
-        <div className="game">
-          <div className="game-board">
-            <Board />
-          </div>
-          <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
-          </div>
-        </div>
-      );
-    }
-  }
-  
-  // ========================================
   
   ReactDOM.render(
-    <Game />,
+    <Listar />,
     document.getElementById('root')
   );
   

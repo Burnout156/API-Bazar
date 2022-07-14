@@ -31,6 +31,7 @@ app.get("/listar", async (req, res) => {
     await Produto.findAll({}).then((register) => {
         return res.json(register)
     })
+        
         .then(() => {
             return res.status(200).json({
                 erro: false,
