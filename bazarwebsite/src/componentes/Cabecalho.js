@@ -1,22 +1,21 @@
 import React from 'react';
-import Nav from 'react-bootstrap/Nav';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route
+  } from "react-router-dom";
+import Listar from '..';
+import Contato from '../pages/Contato';
+import Perfil from '../pages/Perfil';
 
 export default function Cabecalho(){
     return (
-        <Nav className="d-flex justify-content-evenly align-items-center">
-
-            <Nav.Item>
-                <Nav.Link href="/home">Titulo</Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-                <Nav.Link href="/home">Página 1</Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-                <Nav.Link href="/home">Página 2</Nav.Link>
-            </Nav.Item>
-            
-        </Nav>
+        <Router>
+            <Routes>
+                <Route path="/principal" element={<Listar />} /> {/*aqui eu gostaria de voltar para o index.js, só que não faço ideia de como fazer sem dar loop infinito*/}
+                <Route path="/contato" element={<Contato />} />
+                <Route path="/perfil" element={<Perfil />} />
+            </Routes>
+        </Router>
     )
 }

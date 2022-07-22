@@ -23,4 +23,5 @@ class Listar extends React.Component {
     <Listar />,
     document.getElementById('root')
   );
-  
+
+  export default Listar
