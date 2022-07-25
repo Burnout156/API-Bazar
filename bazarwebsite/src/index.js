@@ -2,26 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Cabecalho from './componentes/Cabecalho';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Listagem from './componentes/Listagem';
+import Rotas from './componentes/Rotas';
 
-class Listar extends React.Component {
+class Principal extends React.Component {
 
     render() {
-      const produtos = ["cadeira", "mesa", "cadeira", "mesa"]
-
       return (
         <div>
           <Cabecalho/>
-          <Listagem itens={produtos} />
-          <Listagem itens={[]} />
+          <Rotas/>
         </div>   
       );
     }
   } 
   
   ReactDOM.render(
-    <Listar />,
+    <Principal />,
     document.getElementById('root')
   );
 
-  export default Listar
+  export default Principal
