@@ -28,19 +28,18 @@ app.post("/cadastrar", async (req, res) => {
 });
 
 app.get("/listar", async (req, res) => {
-    await Produto.findAll({}).then((register) => {
-        return res.json(register)
-    })
+    await Produto.findAll({})
         
-        .then(() => {
+        .then((register) => {
             return res.status(200).json({
                 erro: false,
-                mensagem: "Registro inserido!"
+                mensagem: "Registro Lido!",
+                register: register
             });
         }).catch(() => {
             return res.status(400).json({
                 erro: true,
-                mensagem: "Erro ao inserir!"
+                mensagem: "Erro ao Ler Registro!"
             });
         });
 });

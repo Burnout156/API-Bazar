@@ -13,7 +13,7 @@ export default function Rotas(){
                 <Route path="." element={<Principal/>} /> {/*aqui eu gostaria de voltar para o index.js, só que não faço ideia de como fazer sem dar loop infinito*/}
                 <Route path="/Listar" element={<Listar />} />
                 <Route path="/Contato" element={<Contato />} />        
-                <Route path="/Perfil" element={<Perfil />} />
+                <Route path="/Perfil" element={<Perfil />} />               
             </Routes>
           </Router>
         </>

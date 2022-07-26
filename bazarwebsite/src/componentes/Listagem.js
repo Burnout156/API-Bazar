@@ -1,52 +1,58 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types'
+import React, {Component } from 'react';
+import ConectarAPI from './ConectarAPI';
 
-function Listagem({itens}){
-    return (
-        <>
-            <h3 class="text-center mt-5">Produtos</h3>
-                <div class="container mb-5">
-                    <div class="row">
-            {itens.length > 0 ? (
-                itens.map((item, index) => (
-                <div class="col-sm">
-                    <p key={index}>{item}</p>
-                    <Botao />
-                </div>
-            ))) : (
-                <p class="text-center">Não tem Produto</p>
-            )} 
-                    </div>
-                </div>           
-        </>
-    );
-}
+export default class Listagem extends Component {
+  constructor(props) {
+    super(props);
+    this.listarProdutos = this.listaDeProdutos.bind(this);
 
-Listagem.protoTypes = {
-    nome: PropTypes.string.isRequired,
-    preco: PropTypes.number.isRequired
-}
+    console.log("Valor de listarProdutos: " + this.listarProdutos)
 
-Listagem.defaultProps = {
-    nome: "Sem Nome",
-    preco: 0
-}
-
-function Botao() {
-    const [botao, setBotao] = useState("Clique Aqui")
-
-    function clicar() {
-      console.log('clicado');
-      return setBotao("Clicado");    
-    } 
-  
-    return (
-      <>
-        <button className='btn btn-primary' onClick={clicar}>
-          {botao}
-        </button>
-      </>
-    );
+    this.state = {
+      produtos: [],
+    };
   }
 
-export default Listagem
+  componentDidMount() {
+    this.listaDeProdutos();
+  }
+    
+  render() {
+    const {produtos } = this.state
+
+    return(
+      <div className="col-md-6">
+        <h4>Lista de Produtos</h4>
+        {console.log("Valor de Produtos: " + produtos)}
+        <ul className="list-group">
+          {produtos &&
+            produtos.map((produto, index) => (
+              <>
+              <li className="list-group-item " key={index}>
+                {"Nome: " + produto.nome}  
+              </li>
+              <li className="list-group-item " key={index}>
+                {"Preço: " + produto.preco}
+              </li>
+              <br/>
+              </>
+            ))}
+        </ul>    
+      </div>
+  )}; 
+
+  listaDeProdutos() {
+    console.log("ta pegando do back")
+    ConectarAPI.listar()
+      .then(response => {
+        console.log(response.data.register);
+        return this.setState({
+          produtos: response.data.register
+        });
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+}

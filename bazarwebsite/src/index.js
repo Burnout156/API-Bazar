@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import Cabecalho from './componentes/Cabecalho';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Rotas from './componentes/Rotas';
+import axios from 'axios';
+import ConectarAPI from './componentes/ConectarAPI';
 
 class Principal extends React.Component {
+  
+    render() {     
 
-    render() {
       return (
         <div>
           <Cabecalho/>
