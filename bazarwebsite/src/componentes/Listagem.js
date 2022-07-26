@@ -4,7 +4,7 @@ import ConectarAPI from './ConectarAPI';
 export default class Listagem extends Component {
   constructor(props) {
     super(props);
-    this.listarProdutos = this.listaDeProdutos.bind(this);
+  
 
     console.log("Valor de listarProdutos: " + this.listarProdutos)
 
@@ -45,9 +45,9 @@ export default class Listagem extends Component {
     console.log("ta pegando do back")
     ConectarAPI.listar()
       .then(response => {
-        console.log(response.data.register);
+        console.log(response.data.produtos);
         return this.setState({
-          produtos: response.data.register
+          produtos: response.data.produtos
         });
       })
       .catch(e => {

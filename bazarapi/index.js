@@ -30,11 +30,11 @@ app.post("/cadastrar", async (req, res) => {
 app.get("/listar", async (req, res) => {
     await Produto.findAll({})
         
-        .then((register) => {
+        .then((produtos) => {
             return res.status(200).json({
                 erro: false,
                 mensagem: "Registro Lido!",
-                register: register
+                produtos: produtos
             });
         }).catch(() => {
             return res.status(400).json({
