@@ -12,6 +12,10 @@ app.get("/", async (req, res) => {
 })
 
 app.post("/cadastrar", async (req, res) => {
+    req.body.dataCriacao = new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), new Date().getHours(),
+                                  new Date().getMinutes(), new Date().getSeconds()))
+    req.body.ultimaAtualizacao = new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), new Date().getHours(),
+                                  new Date().getMinutes(), new Date().getSeconds()))
 
     await Produto.create(req.body)
         .then(() => {
