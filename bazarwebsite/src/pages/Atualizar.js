@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Perfil(){
+export default function Atualizar(){
     return(
         <div>
             <h1>Seu Nome</h1>

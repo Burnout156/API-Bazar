@@ -17,11 +17,7 @@ const CriarProduto = () => {
       console.log("Descricao: " + descricao);
       console.log("Preco: " + preco);
       e.preventDefault();
-      await axios.post('http://localhost:8080/cadastrar',{
-            nome: nome,
-            descricao: descricao,
-            preco: preco
-        });
+      ConectarAPI.cadastrar(produto)
   }
 
   return (
