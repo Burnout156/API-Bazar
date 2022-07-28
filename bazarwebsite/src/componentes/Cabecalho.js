@@ -7,15 +7,15 @@ export default function Cabecalho(){
         <Nav className="d-flex justify-content-evenly align-items-center">
 
             <Nav.Item>
-                <Nav.Link href=".">Principal</Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
                 <Nav.Link href="/Listar">Listar</Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-                <Nav.Link href="/Contato">Contato</Nav.Link>
+                <Nav.Link href="/CriarProduto">Novo Produto</Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+                <Nav.Link href="/DeletarProduto">Deletar Produto</Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
