@@ -2,12 +2,14 @@ import http from "./RotaAPI";
 import axios from "axios";
 
 class ConectarAPI {
-  listar(id) {
-    axios.delete('http://localhost:8080/deletar',{
-      id: id
-  });
+  listar() {
     return http.get("/listar");
   }
+
+  listarPorId(id) {
+    return http.get("/listarPorId/"+ id);
+  }
+
 
   cadastrar(data) {
     console.log("Info: " + data[0].nome)
@@ -19,10 +21,20 @@ class ConectarAPI {
   }
 
   atualizar(id, data) {
+    axios.patch(`http://localhost:8080//atualizar`,{
+      id: id,
+      nome: data.nome,
+      preco: data.preco,
+      descricao: data.descricao
+    });
+
     return http.put(`/atualizar/${id}`, data);
   }
 
   deletar(id) {
+    axios.delete('http://localhost:8080/deletar',{
+      id: id
+  });
     return http.delete(`/deletar/${id}`);
   }
 

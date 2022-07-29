@@ -48,6 +48,23 @@ app.get("/listar", async (req, res) => {
         });
 });
 
+app.get("/listarPorId/:id", async (req, res) => {
+    await Produto.findAll({ where: {id: req.params.id}})
+        
+        .then((produto) => {
+            return res.status(200).json({
+                erro: false,
+                mensagem: "Registro Único Lido!",
+                produto: produto
+            });
+        }).catch(() => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro ao Ler Registro!"
+            });
+        });
+});
+
 app.delete("/deletar/:id", async (req, res) => {
     const _id = req.params.id
     console.log("req.params: " + _id)

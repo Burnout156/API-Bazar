@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import ConectarAPI from './ConectarAPI';
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
  
 const Listagem = () => {
     const [produtos, setProdutos] = useState([]);
@@ -27,23 +27,24 @@ const Listagem = () => {
         <div>
             <table className="table is-striped is-fullwidth">
                 <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Title</th>
-                        <th>Price</th>
-                        <th>Actions</th>
+                    <tr className='table-primary'>
+                        <th className='table-primary'>ID</th>
+                        <th className='table-primary'>Nome</th>
+                        <th className='table-primary'>Descrição</th>
+                        <th className='table-primary'>Preço</th>
+                        <th className='table-primary'>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     { produtos.map((produto, index) => (
                         <tr key={ produto.id }>
-                            <td>{ index + 1 }</td>
-                            <td>{ produto.nome }</td>
-                            <td>{ produto.descricao }</td>
-                            <td>{ produto.preco }</td>
-                            <td>
-                                <Link to={`/edit/${produto.id}`} className="button is-small is-info">Edit</Link>
-                                <button onClick={ () => deletarProduto(produto.id) } className="button is-small is-danger">Delete</button>
+                            <td className='table-primary'>{ index + 1 }</td>
+                            <td className='table-primary'>{ produto.nome }</td>
+                            <td className='table-primary'>{ produto.descricao }</td>
+                            <td className='table-primary'>{ produto.preco }</td>
+                            <td className='table-primary d-flex justify-content-around'>
+                                <Link to={`/AtualizarProduto/${produto.id}`} className="btn btn-primary mr-2">Editar</Link> 
+                                <button onClick={ () => deletarProduto(produto.id) } className="btn btn-primary">Deletar</button>
                             </td>
                         </tr>
                     )) }
@@ -52,6 +53,7 @@ const Listagem = () => {
             </table>
         </div>
     )
+
 }
  
 export default Listagem

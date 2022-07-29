@@ -5,6 +5,7 @@ import Listar from '../pages/Listar';
 import Atualizar from '../pages/Atualizar';
 import DeletarProduto from '../pages/DeletarProduto';
 import CriarProduto from '../pages/CriarProduto';
+import AtualizarProduto from '../pages/Atualizar';
 
 export default function Rotas(){
     return (
@@ -14,7 +15,7 @@ export default function Rotas(){
                 <Route path="." element={<Principal/>} /> {/*aqui eu gostaria de voltar para o index.js, só que não faço ideia de como fazer sem dar loop infinito*/}
                 <Route path="/Listar" element={<Listar />} />
                 {/* <Route path="/DeletarProduto" element={<DeletarProduto />} />         */}
-                <Route path="/AtualizarProduto" element={<Atualizar />} />   
+                <Route path="/AtualizarProduto/:id" element={<AtualizarProduto />} />   
                 <Route path="/CriarProduto" element={<CriarProduto/>} />            
             </Routes>
           </Router>
