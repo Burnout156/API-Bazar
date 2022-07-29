@@ -19,7 +19,7 @@ export default function Cabecalho(){
             </Nav.Item>
 
             <Nav.Item>
-                <Nav.Link href="/Atualizar">Atualizar Produto</Nav.Link>
+                <Nav.Link href="/AtualizarProduto">Atualizar Produto</Nav.Link>
             </Nav.Item>
 
         </Nav>

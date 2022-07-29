@@ -2,7 +2,10 @@ import http from "./RotaAPI";
 import axios from "axios";
 
 class ConectarAPI {
-  listar() {
+  listar(id) {
+    axios.delete('http://localhost:8080/deletar',{
+      id: id
+  });
     return http.get("/listar");
   }
 
@@ -13,8 +16,6 @@ class ConectarAPI {
         descricao: data[0].descricao,
         preco: data[0].preco
     });
-
-    return http.post("/cadastrar", data);
   }
 
   atualizar(id, data) {

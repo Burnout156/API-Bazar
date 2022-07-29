@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ConectarAPI from '../componentes/ConectarAPI';
 import {Container, Row, Col, Form} from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
-import axios from "axios";
 
 const CriarProduto = () => {
   const [nome, setNome] = useState('');
