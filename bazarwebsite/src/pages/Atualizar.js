@@ -1,9 +1,9 @@
 import React from 'react';
-
 import { useState, useEffect } from 'react'
-import axios from "axios";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ConectarAPI from '../componentes/ConectarAPI';
+import {Container, Row, Col, Form} from 'react-bootstrap'
+import Button from 'react-bootstrap/Button';
  
 const AtualizarProduto = () => {
     const [nome, setNome] = useState('');
@@ -41,46 +41,41 @@ const AtualizarProduto = () => {
     }
  
     return (
-        <div>
-            <form onSubmit={ atualizar }>
-                <div className="field">
-                    <label className="label">Nome</label>
-                    <input 
-                        className="input"
-                        type="text"
-                        placeholder="Nome"
-                        value={ nome }
-                        onChange={ (e) => setNome(e.target.value) }
-                    />
-                </div>
- 
-                <div className="field">
-                    <label className="label">Preco</label>
-                    <input 
-                        className="input"
-                        type="text"
-                        placeholder="Preço"
-                        value={ preco }
-                        onChange={ (e) => setPreco(e.target.value) }
-                    />
-                </div>
+        <Container className="pt-3">
+            <Row>
+                <Col></Col>
+                
+                <Col>
+                    <Form onSubmit={ atualizar }>
+                        
+                        <Form.Group className="mb-3" controlId="nome">
+                            <Form.Label>Nome</Form.Label>
+                            <Form.Control type="text" placeholder="Nome" onChange={ (e) => setNome(e.target.value)} value={nome}/>
+                        </Form.Group>
 
-                <div className="field">
-                    <label className="label">Descricao</label>
-                    <input 
-                        className="input"
-                        type="text"
-                        placeholder="Preço"
-                        value={ descricao }
-                        onChange={ (e) => setDescricao(e.target.value) }
-                    />
-                </div>
- 
-                <div className="field">
-                    <button className="btn btn-primary">Atualizar</button>
-                </div>
-            </form>
-        </div>
+                        <Form.Group className="mb-3" controlId="descricao">
+                            <Form.Label>Descrição</Form.Label>
+                            <Form.Control type="text" placeholder="Descrição" onChange={ (e) => setDescricao(e.target.value)} value={descricao}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="preco">
+                            <Form.Label>Preço</Form.Label>
+                            <Form.Control type="text" placeholder="Preço" onChange={ (e) => setPreco(e.target.value)} value={preco}/>
+                        </Form.Group>
+
+                        <div className='d-flex justify-content-center'>
+                            <Button variant="primary" type="submit">
+                                Enviar
+                            </Button>
+                        </div>
+                        
+                    </Form>
+                </Col>
+
+                <Col></Col>
+            </Row>      
+        </Container>
+     
     )
 }
  
