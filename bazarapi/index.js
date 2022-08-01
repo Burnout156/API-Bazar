@@ -85,14 +85,20 @@ app.delete("/deletar/:id", async (req, res) => {
     });
 });
 
-app.put("/atualizar/:id", async (req, res) => {
-    const _id = req.params.id
+app.put("/atualizar", async (req, res) => {
+    const _id = req.body.id
+    const nome = req.body.nome
+    console.log("REQ.BODY: " + req.body.Produto)
 
+    req.query.nome = req.body.nome
+    req.query.preco = req.body.preco
+    req.query.descricao = req.body.descricao
     req.query.ultimaAtualizacao = new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), new Date().getHours(),
                                   new Date().getMinutes(), new Date().getSeconds()))
+    
 
     console.log("req.params: " + _id)   
-    console.log("req.query.nome: " + req.query.nome)
+    console.log("req.body.nome: " + nome)
     console.log("req.query.dataAtt: " + req.query.ultimaAtualizacao)
 
     await Produto.update(req.query ,{ where: { id: _id } }

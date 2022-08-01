@@ -21,14 +21,15 @@ class ConectarAPI {
   }
 
   atualizar(id, data) {
-    axios.patch(`http://localhost:8080//atualizar`,{
+    console.log("data: " + data)
+    axios.put(`http://localhost:8080/atualizar`,{
       id: id,
-      nome: data.nome,
-      preco: data.preco,
-      descricao: data.descricao
+      nome: data[0],
+      preco: data[1],
+      descricao: data[2]
     });
 
-    return http.put(`/atualizar/${id}`, data);
+    //return http.put(`/atualizar/${id}`, data);
   }
 
   deletar(id) {

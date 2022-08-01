@@ -9,18 +9,20 @@ const AtualizarProduto = () => {
     const [nome, setNome] = useState('');
     const [preco, setPreco] = useState('');
     const [descricao, setDescricao] = useState('');
-    const history = useNavigate();
     const { id } = useParams();
  
     const atualizar = async (e) => {
         console.log("tá atualizando")
-        ConectarAPI.atualizar(id, e)
+        e.preventDefault();
+        ConectarAPI.atualizar(id, [nome, preco, descricao])
+    
         // e.preventDefault();
-        // await axios.patch(`http://localhost:5000/products/${id}`,{
+        // axios.put(`http://localhost:8080/atualizar`,{
+        //     id: id,
         //     nome: nome,
         //     preco: preco,
         //     descricao: descricao
-        // });
+        //   });
         // history.push("/");
     }
  
