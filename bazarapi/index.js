@@ -6,6 +6,8 @@ app.use('*', cors());
 app.use(express.json());
 
 const Produto = require('./models/produtos');//Esse comando irá criar a tabela
+process.env.PORT = 8090
+const porta = process.env.PORT || 8080;
 
 app.get("/", async (req, res) => {
     res.send('Inicial!');
@@ -115,6 +117,6 @@ app.put("/atualizar", async (req, res) => {
          });
 })
 
-app.listen(8080, () => {
-    console.log('Server start...');
+app.listen(porta, () => {
+    console.log('Server start port: ' + porta);
 })

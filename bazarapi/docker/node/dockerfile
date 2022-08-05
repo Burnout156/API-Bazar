@@ -1,0 +1,6 @@
+FROM node:alpine
+WORKDIR /docker/node
+COPY package.json ./
+CMD npm start
+COPY . .
+EXPOSE 8090

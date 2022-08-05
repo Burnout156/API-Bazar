@@ -13,7 +13,7 @@ class ConectarAPI {
 
   cadastrar(data) {
     console.log("Info: " + data[0].nome)
-    return axios.post('http://localhost:8080/cadastrar',{
+    return axios.post('http://localhost:8090/cadastrar',{
         nome: data[0].nome,
         descricao: data[0].descricao,
         preco: data[0].preco
@@ -22,7 +22,7 @@ class ConectarAPI {
 
   atualizar(id, data) {
     console.log("data: " + data)
-    axios.put(`http://localhost:8080/atualizar`,{
+    axios.put(`http://localhost:8090/atualizar`,{
       id: id,
       nome: data[0],
       preco: data[1],
@@ -33,7 +33,7 @@ class ConectarAPI {
   }
 
   deletar(id) {
-    axios.delete('http://localhost:8080/deletar',{
+    axios.delete('http://localhost:8090/deletar',{
       id: id
   });
     return http.delete(`/deletar/${id}`);

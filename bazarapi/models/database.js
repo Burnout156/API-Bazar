@@ -5,8 +5,8 @@ const Sequelize = require('sequelize');
 //         dialect: 'mysql'
 // });
 
-const connection = new Sequelize("bazardb", "root", "root", { //conexão com o container do mysql no docker
-        host: '',
+const connection = new Sequelize("bazardb", "root", "rootpwd", { //conexão com o container do mysql no docker
+        host: 'bazarapi_mysql_1',
         dialect: 'mysql'
 });
 
