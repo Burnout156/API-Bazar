@@ -21,12 +21,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js REACT ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: "Loja-de-Bazar/bazarapi/package-lock.json"
+        path: | 
+          Loja-de-Bazar/bazarapi/node_modules
         #cache-dependency-path2: "./Loja-de-Bazar/bazarwebsite/package-lock.json"
     - run: npm ci
     - run: npm run build --if-present
